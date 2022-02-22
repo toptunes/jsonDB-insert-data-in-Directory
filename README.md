@@ -9,13 +9,13 @@ $db->insert('users', ['first_name' => 'Mohammad', 'last_name' => 'Norouzi', 'cou
 
 echo $db->select('users'); // Select what I inserted to ./db/users.json
 
-echo $db->select('users' ,['first_name' => 'Mohammad', 'last_name' => 'Norouzi'] ); // Select FROM USER WHERE FIRSTNAME = mohammad AND LASTNAME = norouzi
+echo $db->select('users' ,['first_name' => 'Mohammad', 'last_name' => 'Norouzi'] ); // Select * FROM USER WHERE FIRSTNAME = mohammad AND LASTNAME = norouzi
 
 ```
 
 ```php
 
-//$db->update('users', ['first_name' => 'Mohammad'], ['country' => 'USA']);
+$db->update('users', ['first_name' => 'Mohammad'], ['country' => 'USA']); // UPDATE TO users SET firstname = 'mohammad' WHERE country = 'usa'
 
 echo $db->select('users'); // Show me, What I updated ./db/users.json
 
