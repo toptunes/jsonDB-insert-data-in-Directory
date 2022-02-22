@@ -1,0 +1,36 @@
+{
+    "schema": {
+        "first_name": {
+            "nullable": false
+        },
+        "last_name": {
+            "nullable": true
+        },
+        "country": {
+            "nullable": true,
+            "default": "Iran"
+        }
+    },
+    "data": [
+        {
+            "first_name": "Mohammad",
+            "last_name": "Norouzi",
+            "country": "Iran"
+        },
+        {
+            "first_name": "Mohammad",
+            "last_name": "Norouzi",
+            "country": "Iran"
+        },
+        {
+            "first_name": "Mohammad",
+            "last_name": "Norouzi",
+            "country": "Iran"
+        },
+        {
+            "first_name": "Mohammad",
+            "last_name": "Norouzi",
+            "country": "Iran"
+        }
+    ]
+}
