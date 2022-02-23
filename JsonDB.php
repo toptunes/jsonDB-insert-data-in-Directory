@@ -15,31 +15,76 @@ class JsonDB{
              
         
     }
+    private function get_k_v($object){
 
+
+    }
 
   
-    private function show_in_json_db($search_array){
+    private function show_in_json_db($search_array , $method){
 
+        
         // This method tries to find Columns that are not equal to your selected query AND skip them.
         $rows = [];
+        $all_rows = [];
+        
+        $i = 0;
         foreach ($this->all_data_decoded['data'] as $table_row) {
+            
             foreach ($search_array as $key => $value) {
 
-                if ($table_row[$key] != $value) {
+                if ($table_row[$key] == $value) {
 
-                   continue 2;
+                   $rows[] = $i;
 
                 }
+
+                
             }
-            $rows[] = $table_row;
+            $all_rows[] = $i;
+            $i++;
+        }
+
+        if($method == "select"){
+
+            $rows = array_unique($rows);
+        
+        }
+
+        if($method == "delete"){
+
+            $rows = array_diff($all_rows, $rows);
+
+        }
+
+    
+        $table_rows = [];
+        foreach ($rows as $key => $value) {
+    
+            $table_rows[] =  $this->all_data_decoded['data'][$rows[$key]];
+
+        }
+        
+       
+
+        if($method == "select"){
+            return json_encode($table_rows,JSON_PRETTY_PRINT);
+
         }
       
-     
-        return json_encode($rows,JSON_PRETTY_PRINT);
+        if($method == "delete"){
+            $this->all_data_decoded['data'] = $table_rows;
+            self::just_put_it();
+        }
+        
+
+
+      
+        
     
        
     }
-
+/*
     private function delete_in_json_db($search_array){
 
         // This method tries to find Columns that are equal to your selected query AND gather them.
@@ -60,7 +105,7 @@ class JsonDB{
       
        
     }
-
+*/
 
     private function check_array_value($search_array,$input){
       
@@ -132,12 +177,12 @@ class JsonDB{
 
                 if($allow_show == 1){
 
-                    return self::show_in_json_db($search_array);
+                    return self::show_in_json_db($search_array,"select");
 
                 }
                 if($allow_show == 2){
                 
-                    return self::delete_in_json_db($search_array);
+                    return self::show_in_json_db($search_array,"delete");
 
                 }
 
@@ -345,14 +390,15 @@ class JsonDB{
 
         if(!empty($search_array)){
 
-
+           
             
             if(self::let_schema_allow_method_2($search_array) ){
-                return self::delete_in_json_db($search_array);
+                return self::show_in_json_db($search_array,"delete");
             }
 
         }else{
 
+          
             $this->all_data_decoded["data"] = []; // delete all data from table 
             
             self::just_put_it(); // and save 
@@ -435,11 +481,5 @@ class JsonDB{
        
     }
 }
-
-
-
-$db = new JsonDB(__DIR__ . '/db');
-
-$db->select('users', ['first_name' => 'Ali']);
 
 

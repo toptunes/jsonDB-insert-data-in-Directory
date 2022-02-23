@@ -11,5 +11,18 @@
             "default": "Iran"
         }
     },
-    "data": []
+    "data": [{
+        "first_name": "John",
+        "last_name": "Smith",
+        "country": "U.S."
+    },
+    {
+        "first_name": "John",
+        "last_name": "Smith",
+        "country": "U.S."
+    }, {
+        "first_name": "Ali",
+        "last_name": null,
+        "country": "Iran"
+    }]
 }
