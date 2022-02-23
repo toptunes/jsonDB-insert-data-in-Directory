@@ -420,13 +420,13 @@ class JsonDB{
             if(!empty($search_array)){
 
                 if(self::let_schema_allow_method_2($search_array) ){
-                    return self::search_json_db($search_array,1);
+                    echo self::search_json_db($search_array,1);
                 }
                
  
              }else{
  
-                return json_encode($this->all_data_decoded["data"],JSON_PRETTY_PRINT);
+                echo json_encode($this->all_data_decoded["data"],JSON_PRETTY_PRINT);
  
              }
             
