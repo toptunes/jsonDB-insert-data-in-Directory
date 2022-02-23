@@ -440,11 +440,6 @@ class JsonDB{
 
 $db = new JsonDB(__DIR__ . '/db');
 
-$db->insert('users', ['first_name' => 'Mohammad', 'last_name' => 'Norouzi', 'country' => 'Iran']); //  inserted to ./db/users.json
-
-echo $db->select('users'); // Select what we inserted to ./db/users.json
-
-//$db->update('users', ['first_name' => 'Mohammad'], ['country' => 'USA']);
+$db->select('users', ['first_name' => 'Ali']);
 
 
-//$db->delete('users', ['first_name' => 'Mohammad']);
