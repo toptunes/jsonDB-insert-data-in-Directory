@@ -490,8 +490,3 @@ class JsonDB{
 }
 
 
-$db = new JsonDB(__DIR__ . '/db');
-
-$db->select('user3s');
-
-//$db->delete('users', ['first_name' => 'Mohammad']);
