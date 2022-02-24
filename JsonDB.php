@@ -125,8 +125,9 @@ class JsonDB{
             foreach ($search_array as $k => $v) {
               
                 if(!isset($schema[$k])){
-                    throw new Exception("Column $k not found");  
-  
+                    $exception = new Exception("Column $k not found");  
+                    echo $exception->getMessage();
+                    die();
                     continue 1;
                     
                 }
@@ -148,8 +149,9 @@ class JsonDB{
 
                
                 if($v== "" && !isset($search_array[$key])){
-                    throw new Exception("No value provided for column $key");  
-  
+                    $exception = new Exception("No value provided for column $key");  
+                    echo $exception->getMessage();
+                    die();
                 }
 
                
@@ -171,8 +173,9 @@ class JsonDB{
         foreach ($search_array as $key => $value) {
            
             if (!isset($schema[$key])) {
-                throw new Exception("Column $key not found");
-                return false;
+                $exception = new Exception("Column $key not found");
+                echo $exception->getMessage();
+                die();
             }else{
 
                 if($allow_show == 1){
@@ -382,8 +385,9 @@ class JsonDB{
 
         if(self::check_exists($table_name) == false){ 
 
-            throw new Exception("Table $table_name not found"); 
-  
+            $exception = new Exception("Table $table_name not found"); 
+            echo $exception->getMessage();
+            die();
         }
         self::search_json_db($search_array,0);
         self::search_json_db($where_array,0);
@@ -414,8 +418,9 @@ class JsonDB{
      
         if(self::check_exists($table_name) == false){
 
-            throw new Exception("Table $table_name not found"); 
-  
+            $exception  = new Exception("Table $table_name not found"); 
+            echo $exception->getMessage();
+            die();
         }
 
         if(!empty($set_array)){
@@ -437,8 +442,9 @@ class JsonDB{
      
         if(self::check_exists($table_name) == false){
 
-            throw new Exception("Table $table_name not found");  
-  
+            $exception = new Exception("Table $table_name not found");  
+            echo $exception->getMessage();
+            die();
         }
 
             return self::insert_json_db($search_array);
@@ -458,8 +464,9 @@ class JsonDB{
 
             if(self::check_exists($table_name) == false){
 
-                throw new Exception("Table $table_name not found"); 
-      
+                $exception = new Exception("Table $table_name not found"); 
+                echo $exception->getMessage();
+                die();
             }
         
 
@@ -485,6 +492,6 @@ class JsonDB{
 
 $db = new JsonDB(__DIR__ . '/db');
 
-$db->select('users');
+$db->select('user3s');
 
-$db->delete('users', ['first_name' => 'Mohammad']);
+//$db->delete('users', ['first_name' => 'Mohammad']);
