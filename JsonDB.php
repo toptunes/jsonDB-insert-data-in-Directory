@@ -3,10 +3,10 @@
 class JsonDB{
 
   
-    public $db_path;
-    public $table_dir;
-    public $all_data;
-    public $all_data_decoded;
+    private $db_path;
+    private $table_dir;
+    private $all_data;
+    private $all_data_decoded;
 
     public function __construct($db_path = __DIR__){
  
@@ -483,3 +483,8 @@ class JsonDB{
 }
 
 
+$db = new JsonDB(__DIR__ . '/db');
+
+$db->select('users');
+
+$db->delete('users', ['first_name' => 'Mohammad']);
